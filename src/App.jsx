@@ -4,6 +4,7 @@ import MainLayout from "./components/MainLayout";
 import Onglet1 from "./pages/Onglet1";
 import Onglet2 from "./pages/Onglet2";
 import Onglet3 from "./pages/Onglet3";
+import Client from "./pages/Client"; 
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/onglet1" element={<Onglet1 />} />
           <Route path="/onglet2" element={<Onglet2 />} />
           <Route path="/onglet3" element={<Onglet3 />} />
+          <Route path="espace-client" element={<Client />} />
 
           {/* Accueil */}
           <Route path="/" element={<Onglet1 />} />

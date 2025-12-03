@@ -1,9 +1,7 @@
 // 📌 Fichier : src/layouts/MainLayout.jsx
-// Version mise à jour : fond blanc sur tout le site et texte noir
-
 import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { MountainSnow, Snowflake, Navigation } from "lucide-react";
+import { MountainSnow, Snowflake, Navigation, User } from "lucide-react"; // ajout de User pour l'icône
 
 const MainLayout = () => {
   const location = useLocation();
@@ -53,6 +51,15 @@ const MainLayout = () => {
                 </Link>
               );
             })}
+
+            {/* Onglet Espace Client tout à droite */}
+            <Link
+              to="/espace-client"
+              className="ml-6 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-white hover:bg-blue-500/40 hover:shadow transition-all duration-200"
+            >
+              <User className="h-5 w-5" />
+              Espace Client
+            </Link>
           </div>
 
           {/* Mobile placeholder */}
