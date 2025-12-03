@@ -7,9 +7,9 @@ const MainLayout = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/onglet1", label: "Onglet 1", icon: MountainSnow },
-    { path: "/onglet2", label: "Onglet 2", icon: Snowflake },
-    { path: "/onglet3", label: "Onglet 3", icon: Navigation },
+    { path: "/Accueil", label: "Accueil", icon: MountainSnow },
+    { path: "/Forfait", label: "Forfait", icon: Snowflake },
+    // { path: "/onglet3", label: "Onglet 3", icon: Navigation },
   ];
 
   return (
