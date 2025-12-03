@@ -17,7 +17,7 @@ const MainLayout = () => {
   return (
     <div className="bg-white text-black min-h-screen">
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 border-b bg-blue-600/90 backdrop-blur-md shadow-md">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-blue-600/90 backdrop-blur-md shadow-md">
         <div className="max-w-6xl mx-auto flex h-20 items-center justify-between px-4">
           {/* Logo / Titre */}
           <Link to="/" className="flex items-center gap-3">
@@ -63,7 +63,7 @@ const MainLayout = () => {
       </nav>
 
       {/* CONTENU DES PAGES */}
-      <main>
+      <main className="w-full px-4 py-28">
         <Outlet />
       </main>
     </div>
