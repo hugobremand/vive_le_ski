@@ -5,6 +5,7 @@ import Forfait from "./pages/Forfait";
 import Onglet3 from "./pages/Onglet3";
 import Client from "./pages/Client"; 
 import Accueil from "./pages/Accueil";
+import CommandeForfait from "./pages/CommandeForfait";
 
 export default function App() {
   return (
@@ -14,6 +15,8 @@ export default function App() {
           <Route path="/Accueil" element={<Accueil />} />
           <Route path="/Forfait" element={<Forfait />} />
           {/* <Route path="/onglet3" element={<Onglet3 />} /> */}
+          <Route path="/commandeForfait" element={<CommandeForfait />} />
+
           <Route path="espace-client" element={<Client />} />
 
           <Route path="/" element={<Accueil />} />
