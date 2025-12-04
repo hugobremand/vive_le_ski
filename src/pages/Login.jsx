@@ -1,8 +1,16 @@
 import { useState } from "react";
 import { useAuth } from "../context/useAuth";
+import { useNavigate, useLocation } from "react-router-dom";
+
+
 
 export default function Login() {
-  const { login } = useAuth(); 
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Route où l'utilisateur voulait aller AVANT login
+  const from = location.state?.from || "/espace-client";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +25,8 @@ export default function Login() {
       return;
     }
 
-    alert("Connexion réussie !");
-    console.log("Utilisateur :", result.user);
+    // 🔥 Redirection automatique vers la page demandée
+    navigate(from, { replace: true });
   };
 
   return (
