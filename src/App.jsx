@@ -5,12 +5,14 @@ import Forfait from "./pages/Forfait";
 import Onglet3 from "./pages/Onglet3";
 import Client from "./pages/Client"; 
 import Accueil from "./pages/Accueil";
+import Login from "./pages/Login";
 import CommandeForfait from "./pages/CommandeForfait";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/Login" element={<Login/>} />
         <Route element={<MainLayout />}>
           <Route path="/Accueil" element={<Accueil />} />
           <Route path="/Forfait" element={<Forfait />} />
@@ -20,6 +22,7 @@ export default function App() {
           <Route path="espace-client" element={<Client />} />
 
           <Route path="/" element={<Accueil />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>
