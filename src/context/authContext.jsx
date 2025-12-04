@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
       );
 
       if (result.documents.length === 0) {
-        return { success: false, message: "Identifiants incorrects" };
+        return { success: false, message: "Adresse mail ou mot de passe incorrect" };
       }
 
       const foundUser = result.documents[0];
