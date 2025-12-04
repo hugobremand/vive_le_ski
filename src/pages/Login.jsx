@@ -70,6 +70,9 @@ export default function Login() {
             Se connecter
           </button>
         </form>
+        <a href="/register" className="block mt-4 text-center text-blue-500 hover:underline">
+          Inscrivez-vous
+        </a>
       </div>
     </div>
   );

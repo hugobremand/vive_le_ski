@@ -14,6 +14,7 @@ import Client from "./pages/Client";
 import Accueil from "./pages/Accueil";
 import Login from "./pages/Login";
 import CommandeForfait from "./pages/CommandeForfait";
+import Register from "./pages/Register";
 
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
@@ -32,6 +33,9 @@ export default function App() {
       <Routes>
         {/* route login SANS layout */}
         <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+
 
         {/* Routes avec MainLayout */}
         <Route element={<MainLayout />}>

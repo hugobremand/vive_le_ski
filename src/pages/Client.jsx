@@ -1,28 +1,41 @@
-// 📌 src/pages/EspaceClient.jsx
 import React from "react";
+import { useAuth } from "../context/useAuth";
+import { useNavigate } from "react-router-dom";
 
-const Client = () => {
-  // Données statiques pour l'exemple
-  const client = {
-    nom: "Dupont",
-    prenom: "Jean",
-    email: "jean.dupont@example.com",
+export default function Client() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // on vide le user
+    navigate("/login"); // redirection vers login
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Espace Client</h2>
-      <p>
-        <strong>Nom :</strong> {client.nom}
-      </p>
-      <p>
-        <strong>Prénom :</strong> {client.prenom}
-      </p>
-      <p>
-        <strong>Email :</strong> {client.email}
-      </p>
+    <div className="min-h-screen bg-gray-100 p-4">
+      {/* Header avec bouton déconnexion */}
+      <div className="flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow">
+        <h1 className="text-2xl font-bold text-blue-700">Espace Client</h1>
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
+        >
+          Déconnexion
+        </button>
+      </div>
+
+      {/* Contenu utilisateur */}
+      <div className="bg-white p-6 rounded-xl shadow">
+        <p>
+          <strong>Nom :</strong> {user.lastName}
+        </p>
+        <p>
+          <strong>Prénom :</strong> {user.firstName}
+        </p>
+        <p>
+          <strong>Email :</strong> {user.email}
+        </p>
+      </div>
     </div>
   );
-};
-
-export default Client;
+}
