@@ -2,7 +2,6 @@
 import React, { useState, useMemo } from "react";
 
 const CommandeForfait = () => {
-  // Prix des forfaits
   const prixAdultes = {
     "1 Jour": 81.8,
     "6 Jours": 409,
@@ -15,39 +14,27 @@ const CommandeForfait = () => {
     Samedi: 39,
   };
 
-  // Forfait adulte obligatoire
   const [adulteObligatoire, setAdulteObligatoire] = useState("1 Jour");
-
-  // Quantités supplémentaires
   const [adulteSup, setAdulteSup] = useState({
     "1 Jour": 0,
     "6 Jours": 0,
     Samedi: 0,
   });
-
   const [enfants, setEnfants] = useState({
     "1 Jour": 0,
     "6 Jours": 0,
     Samedi: 0,
   });
 
-  // ⭐ Calcul automatique du total
   const total = useMemo(() => {
     let t = 0;
-
-    // Adulte obligatoire
     t += prixAdultes[adulteObligatoire];
-
-    // Adultes supplémentaires
     Object.keys(adulteSup).forEach((type) => {
       t += adulteSup[type] * prixAdultes[type];
     });
-
-    // Enfants
     Object.keys(enfants).forEach((type) => {
       t += enfants[type] * prixEnfants[type];
     });
-
     return t.toFixed(2);
   }, [adulteObligatoire, adulteSup, enfants]);
 
@@ -57,15 +44,21 @@ const CommandeForfait = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md mt-10">
-      <h1 className="text-3xl font-bold mb-6">Commander un forfait</h1>
+    <div className="max-w-3xl mx-auto bg-white p-4 sm:p-6 rounded-xl shadow-md mt-6 sm:mt-10">
+      <h2 className="text-4xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center sm:text-left leading-none">
+        Commander un forfait
+      </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         {/* FORFAIT ADULTE OBLIGATOIRE */}
-        <div className="border p-4 rounded-lg shadow-sm">
-          <h2 className="text-xl font-bold mb-3">Forfait Adulte Obligatoire</h2>
+        <div className="border p-3 sm:p-4 rounded-lg shadow-sm">
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+            Forfait Adulte Obligatoire
+          </h2>
 
-          <label className="block mb-2">Type de forfait :</label>
+          <label className="block mb-2 text-sm sm:text-base">
+            Type de forfait :
+          </label>
           <select
             value={adulteObligatoire}
             onChange={(e) => setAdulteObligatoire(e.target.value)}
@@ -80,14 +73,17 @@ const CommandeForfait = () => {
         </div>
 
         {/* FORFAITS ADULTES SUPPLÉMENTAIRES */}
-        <div className="border p-4 rounded-lg shadow-sm">
-          <h2 className="text-xl font-bold mb-3">
+        <div className="border p-3 sm:p-4 rounded-lg shadow-sm">
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
             Forfaits Adultes Supplémentaires
           </h2>
 
           {Object.keys(adulteSup).map((type) => (
-            <div key={type} className="flex items-center justify-between mb-3">
-              <span>{type}</span>
+            <div
+              key={type}
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-3"
+            >
+              <span className="mb-1 sm:mb-0">{type}</span>
               <input
                 type="number"
                 min="0"
@@ -95,19 +91,24 @@ const CommandeForfait = () => {
                 onChange={(e) =>
                   setAdulteSup({ ...adulteSup, [type]: Number(e.target.value) })
                 }
-                className="border p-1 w-20 rounded text-center"
+                className="border p-1 w-full sm:w-20 rounded text-center"
               />
             </div>
           ))}
         </div>
 
         {/* FORFAITS ENFANTS */}
-        <div className="border p-4 rounded-lg shadow-sm">
-          <h2 className="text-xl font-bold mb-3">Forfaits Enfants</h2>
+        <div className="border p-3 sm:p-4 rounded-lg shadow-sm">
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
+            Forfaits Enfants
+          </h2>
 
           {Object.keys(enfants).map((type) => (
-            <div key={type} className="flex items-center justify-between mb-3">
-              <span>{type}</span>
+            <div
+              key={type}
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-3"
+            >
+              <span className="mb-1 sm:mb-0">{type}</span>
               <input
                 type="number"
                 min="0"
@@ -115,14 +116,14 @@ const CommandeForfait = () => {
                 onChange={(e) =>
                   setEnfants({ ...enfants, [type]: Number(e.target.value) })
                 }
-                className="border p-1 w-20 rounded text-center"
+                className="border p-1 w-full sm:w-20 rounded text-center"
               />
             </div>
           ))}
         </div>
 
-        {/* ⭐ TOTAL AFFICHÉ AVANT LE BOUTON */}
-        <div className="text-right text-2xl font-bold mt-6">
+        {/* TOTAL */}
+        <div className="text-right text-xl sm:text-2xl font-bold mt-4 sm:mt-6">
           Total : {total} €
         </div>
 
